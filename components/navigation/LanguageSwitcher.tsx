@@ -13,16 +13,16 @@ export function LanguageSwitcher() {
   ];
 
   return (
-    <div className="flex items-center gap-1 rounded-full bg-card/50 p-1">
+    <div className="flex items-center gap-0.5 rounded-full bg-white/10 backdrop-blur-sm p-0.5">
       {languages.map((lang) => (
         <button
           key={lang.code}
           onClick={() => setLocale(lang.code)}
           className={cn(
-            'px-3 py-1.5 text-sm font-medium rounded-full transition-all duration-200',
+            'px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200',
             locale === lang.code
-              ? 'bg-primary text-primary-foreground'
-              : 'text-foreground/70 hover:text-foreground hover:bg-card/80'
+              ? 'bg-white/20 text-white'
+              : 'text-white/60 hover:text-white'
           )}
           aria-label={`Switch to ${lang.label}`}
         >
