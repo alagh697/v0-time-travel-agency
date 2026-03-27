@@ -1,78 +1,154 @@
 'use client';
 
+import { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLocale } from '@/lib/locale-context';
 import { destinationsData } from '@/data/destinations';
 import { navigationData } from '@/data/navigation';
-import { Container, Section, Heading } from '@/components/shared';
-import { DestinationCard } from '@/components/ui/DestinationCard';
+import { Container, Section } from '@/components/shared';
 import { Button } from '@/components/ui/button';
-import { staggerContainer, staggerItem, fadeUp } from '@/lib/animations';
+import { cn } from '@/lib/utils';
 
 export function DestinationsSection() {
   const { t } = useLocale();
   const destinations = t(destinationsData);
   const nav = t(navigationData);
-  
-  const featuredDestination = destinations.find((d) => d.featured) || destinations[0];
-  const otherDestinations = destinations.filter((d) => d.id !== featuredDestination.id);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  // Determine which card is "active" (expanded)
+  // Default: first card is active, or hovered card takes priority
+  const activeIndex = hoveredIndex !== null ? hoveredIndex : 0;
 
   return (
     <Section id="destinations" size="md" animate={false}>
       <Container>
-        {/* Header */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={fadeUp}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10"
-        >
-          <div>
-            <Heading as="h2" size="lg">
-              {t({ fr: 'Destinations magiques', en: 'Magical Destinations' })}
-            </Heading>
-            <p className="text-muted-foreground mt-2 max-w-lg">
-              {t({
-                fr: 'Explorez des époques fascinantes et vivez des expériences inoubliables.',
-                en: 'Explore fascinating eras and live unforgettable experiences.',
-              })}
-            </p>
-          </div>
-          <Button variant="outline" className="rounded-full shrink-0">
-            {nav.cta}
-          </Button>
-        </motion.div>
+        {/* SEO Title - Visually Hidden */}
+        <h2 className="sr-only">
+          {t({ fr: 'Destinations magiques', en: 'Magical Destinations' })}
+        </h2>
 
-        {/* Destinations Grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={staggerContainer}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6"
+        {/* Desktop: Horizontal Flex with Dynamic Sizing */}
+        <div 
+          className="hidden md:flex gap-4 lg:gap-6"
+          style={{ height: '480px' }}
+          onMouseLeave={() => setHoveredIndex(null)}
         >
-          {/* Large Featured Card */}
-          <motion.div variants={staggerItem} className="lg:row-span-2">
-            <DestinationCard
-              destination={featuredDestination}
-              size="lg"
-              ctaLabel={nav.cta}
-              className="h-full"
-            />
-          </motion.div>
+          {destinations.map((destination, index) => {
+            const isActive = activeIndex === index;
+            
+            return (
+              <motion.div
+                key={destination.id}
+                className="relative overflow-hidden rounded-3xl cursor-pointer"
+                style={{ flex: isActive ? 2 : 1 }}
+                animate={{ flex: isActive ? 2 : 1 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                onMouseEnter={() => setHoveredIndex(index)}
+              >
+                {/* Background Image */}
+                <Image
+                  src={destination.image}
+                  alt={destination.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                
+                {/* Dark Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                
+                {/* Content */}
+                <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end">
+                  <motion.div
+                    initial={false}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <h3 className={cn(
+                      'font-semibold text-white transition-all duration-300',
+                      isActive ? 'text-2xl lg:text-3xl' : 'text-lg lg:text-xl'
+                    )}>
+                      {destination.title}
+                    </h3>
+                    
+                    {/* Description - Only visible on active card */}
+                    <motion.p
+                      className="mt-2 text-white/80 text-sm lg:text-base max-w-sm"
+                      initial={false}
+                      animate={{ 
+                        opacity: isActive ? 1 : 0,
+                        height: isActive ? 'auto' : 0,
+                        marginTop: isActive ? 8 : 0
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {destination.description}
+                    </motion.p>
+                    
+                    {/* CTA Button - Only visible on active card */}
+                    <motion.div
+                      initial={false}
+                      animate={{ 
+                        opacity: isActive ? 1 : 0,
+                        y: isActive ? 0 : 10,
+                        height: isActive ? 'auto' : 0,
+                        marginTop: isActive ? 16 : 0
+                      }}
+                      transition={{ duration: 0.3, delay: isActive ? 0.1 : 0 }}
+                    >
+                      <Button 
+                        variant="secondary" 
+                        className="rounded-full bg-[#F5F0E8] text-[#3D3929] hover:bg-[#EBE6DC] border-0"
+                      >
+                        {nav.cta}
+                      </Button>
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
 
-          {/* Small Cards */}
-          {otherDestinations.slice(0, 2).map((destination) => (
-            <motion.div key={destination.id} variants={staggerItem}>
-              <DestinationCard
-                destination={destination}
-                size="sm"
-                ctaLabel={nav.cta}
+        {/* Mobile: Vertical Stack */}
+        <div className="flex flex-col gap-4 md:hidden">
+          {destinations.map((destination) => (
+            <div
+              key={destination.id}
+              className="relative overflow-hidden rounded-2xl"
+              style={{ height: '280px' }}
+            >
+              {/* Background Image */}
+              <Image
+                src={destination.image}
+                alt={destination.title}
+                fill
+                className="object-cover"
+                sizes="100vw"
               />
-            </motion.div>
+              
+              {/* Dark Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              
+              {/* Content */}
+              <div className="absolute inset-0 p-5 flex flex-col justify-end">
+                <h3 className="text-xl font-semibold text-white">
+                  {destination.title}
+                </h3>
+                <p className="mt-2 text-white/80 text-sm line-clamp-2">
+                  {destination.description}
+                </p>
+                <Button 
+                  variant="secondary" 
+                  className="mt-4 rounded-full bg-[#F5F0E8] text-[#3D3929] hover:bg-[#EBE6DC] border-0 w-fit"
+                >
+                  {nav.cta}
+                </Button>
+              </div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </Container>
     </Section>
   );
