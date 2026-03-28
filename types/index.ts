@@ -131,3 +131,65 @@ export interface NavigationContent {
 export interface FooterContent {
   copyright: string;
 }
+
+// Quiz Types
+export interface QuizOption {
+  id: string;
+  label: string;
+  icon?: string;
+  destinationScores: Record<string, number>;
+}
+
+export interface QuizQuestion {
+  id: string;
+  question: string;
+  description?: string;
+  options: QuizOption[];
+}
+
+export interface QuizData {
+  intro: {
+    title: string;
+    description: string;
+    startButton: string;
+  };
+  questions: QuizQuestion[];
+  loading: {
+    title: string;
+    description: string;
+  };
+  result: {
+    title: string;
+    exploreButton: string;
+    retakeButton: string;
+  };
+  navigation: {
+    previous: string;
+    next: string;
+    close: string;
+  };
+}
+
+export interface QuizDestination {
+  id: string;
+  name: string;
+  shortSummary: string;
+  era: string;
+  image: string;
+  traits: string[];
+  defaultWhyItMatches: string;
+}
+
+export interface RecommendationResponse {
+  destinationId: string;
+  destinationName: string;
+  shortSummary: string;
+  whyItMatches: string;
+  matchingTraits: string[];
+  confidenceLabel?: string;
+}
+
+export interface QuizAnswer {
+  questionId: string;
+  optionId: string;
+}
