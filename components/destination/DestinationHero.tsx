@@ -8,7 +8,6 @@ import { useLocale } from '@/lib/locale-context';
 import { destinationDetailContent } from '@/data/destination-details';
 import { Container } from '@/components/shared';
 import type { DestinationDetail } from '@/types';
-import { Header } from '../navigation';
 
 interface DestinationHeroProps {
   destination: DestinationDetail;
@@ -42,8 +41,6 @@ export function DestinationHero({ destination }: DestinationHeroProps) {
 
       {/* Content */}
       <Container className="relative z-10 pb-12 md:pb-16">
-        {/* Header */}
-        <Header />
 
         {/* Back Button */}
         <motion.div
