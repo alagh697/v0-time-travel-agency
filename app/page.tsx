@@ -13,6 +13,7 @@ import {
   FAQSection,
 } from '@/components/sections';
 import { Footer } from '@/components/layout';
+import { SupportChat } from '@/components/features/support-chat';
 
 export default function HomePage() {
   return (
@@ -29,6 +30,7 @@ export default function HomePage() {
         <FAQSection />
       </main>
       <Footer />
+      <SupportChat />
     </LocaleProvider>
   );
 }

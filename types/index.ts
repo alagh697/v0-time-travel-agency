@@ -193,3 +193,54 @@ export interface QuizAnswer {
   questionId: string;
   optionId: string;
 }
+
+// Support Chat Types
+export interface ChatMessage {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: Date;
+}
+
+export interface SupportChatContent {
+  buttonLabel: string;
+  headerTitle: string;
+  headerSubtitle: string;
+  placeholder: string;
+  sendButton: string;
+  loadingText: string;
+  errorText: string;
+  resetButton: string;
+  closeButton: string;
+  quickActions: QuickAction[];
+}
+
+export interface QuickAction {
+  id: string;
+  label: string;
+  prompt: string;
+}
+
+export interface KnowledgeEntry {
+  id: string;
+  category: string;
+  keywords: string[];
+  question: string;
+  answer: string;
+}
+
+export interface SupportKnowledgeBase {
+  categories: string[];
+  entries: KnowledgeEntry[];
+}
+
+export interface SupportChatRequest {
+  message: string;
+  locale: Locale;
+  conversationHistory: Array<{ role: 'user' | 'assistant'; content: string }>;
+}
+
+export interface SupportChatResponse {
+  message: string;
+  isAiGenerated: boolean;
+}
