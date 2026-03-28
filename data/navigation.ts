@@ -17,7 +17,7 @@ export const navigationData: LocalizedContent<NavigationContent> = {
       { label: 'Home', href: '#' },
       { label: 'Destinations', href: '#destinations' },
       { label: 'Pricing', href: '#pricing' },
-      { label: 'Contact', href: '#contact' },
+      { label: 'Contact', href: '/contact' },
     ],
     cta: 'Book a Trip',
   },
