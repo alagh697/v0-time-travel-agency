@@ -39,8 +39,8 @@ export const heroDestinationsData: LocalizedContent<HeroDestinationsContent> = {
         subtitle: 'Il y a 66 millions d\'années',
         description: 'Observez les derniers dinosaures dans leur habitat naturel, juste avant l\'extinction massive.',
         imageSrc: '/images/destinations/cretace.jpg',
-        heroVideoSrc: '/videos/cretace.mp4',
-        fallbackImageSrc: 'https://images.unsplash.com/photo-1606856110002-d0991ce78250?w=1920&q=80',
+        heroVideoSrc: '/videos/Crétacé.mp4',
+        fallbackImageSrc: 'images/Cretace.jpg',
         stats: {
           era: '-66M années',
           duration: '4 heures',
@@ -77,8 +77,8 @@ export const heroDestinationsData: LocalizedContent<HeroDestinationsContent> = {
         subtitle: 'Le berceau de l\'art',
         description: 'Rencontrez les grands maîtres de la Renaissance italienne dans leur atelier.',
         imageSrc: '/images/destinations/florence.jpg',
-        heroVideoSrc: '/videos/florence.mp4',
-        fallbackImageSrc: 'https://images.unsplash.com/photo-1543429258-c5f5f1bf0cfc?w=1920&q=80',
+        heroVideoSrc: '/videos/Florence.mp4',
+        fallbackImageSrc: '/images/Florence.jpg',
         stats: {
           era: '1500',
           duration: '5 heures',
