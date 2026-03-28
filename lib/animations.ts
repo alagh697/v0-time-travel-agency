@@ -16,6 +16,7 @@ export const fadeUp: Variants = {
   },
 };
 
+
 // Fade in animation - simple opacity transition
 export const fadeIn: Variants = {
   hidden: {
