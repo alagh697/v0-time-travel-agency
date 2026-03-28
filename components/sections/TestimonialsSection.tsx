@@ -49,12 +49,12 @@ export function TestimonialsSection() {
           <motion.div variants={staggerItem}>
             <TestimonialCard testimonial={testimonials[0]} />
           </motion.div>
-          <motion.div variants={staggerItem}>
+          {/* <motion.div variants={staggerItem}>
             <TestimonialCard
               testimonial={testimonials[1]}
               variant={testimonials[1].image ? 'image' : 'default'}
             />
-          </motion.div>
+          </motion.div> */}
           <motion.div variants={staggerItem}>
             <TestimonialCard testimonial={testimonials[2]} />
           </motion.div>
