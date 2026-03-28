@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useLocale } from '@/lib/locale-context';
 import { heroData } from '@/data/hero';
@@ -10,6 +10,8 @@ import { Header } from '@/components/navigation';
 import { HeroBackgroundVideo, HeroDestinationCard, HeroBookingForm } from '@/components/hero';
 import { heroFade, staggerContainer, staggerItem } from '@/lib/animations';
 
+const AUTO_ROTATE_INTERVAL = 5000; // 5 seconds
+
 export function HeroSection() {
   const { t } = useLocale();
   const hero = t(heroData);
@@ -18,11 +20,49 @@ export function HeroSection() {
   
   // Default to Cretace (index 0) as the active destination
   const [activeDestinationIndex, setActiveDestinationIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const activeDestination = heroDestinations.destinations[activeDestinationIndex];
+  const totalDestinations = heroDestinations.destinations.length;
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleDestinationChange = (index: number) => {
+  // Auto-rotation logic
+  const startAutoRotate = useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+    timerRef.current = setInterval(() => {
+      if (!isPaused) {
+        setActiveDestinationIndex((prev) => (prev + 1) % totalDestinations);
+      }
+    }, AUTO_ROTATE_INTERVAL);
+  }, [isPaused, totalDestinations]);
+
+  // Start auto-rotation on mount
+  useEffect(() => {
+    startAutoRotate();
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, [startAutoRotate]);
+
+  // Handle manual destination change - resets the timer
+  const handleDestinationChange = useCallback((index: number) => {
     setActiveDestinationIndex(index);
-  };
+    // Reset timer when user manually changes destination
+    startAutoRotate();
+  }, [startAutoRotate]);
+
+  // Pause/resume handlers for user interaction
+  const handleInteractionStart = useCallback(() => {
+    setIsPaused(true);
+  }, []);
+
+  const handleInteractionEnd = useCallback(() => {
+    setIsPaused(false);
+    startAutoRotate();
+  }, [startAutoRotate]);
 
   return (
     <section className="relative min-h-screen">
@@ -52,6 +92,8 @@ export function HeroSection() {
                 activeIndex={activeDestinationIndex}
                 onDestinationChange={handleDestinationChange}
                 content={heroDestinations}
+                onInteractionStart={handleInteractionStart}
+                onInteractionEnd={handleInteractionEnd}
               />
             </motion.div>
 
@@ -101,6 +143,8 @@ export function HeroSection() {
             activeIndex={activeDestinationIndex}
             onDestinationChange={handleDestinationChange}
             content={hero}
+            onInteractionStart={handleInteractionStart}
+            onInteractionEnd={handleInteractionEnd}
           />
         </div>
       </div>

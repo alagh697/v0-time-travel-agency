@@ -11,6 +11,8 @@ interface HeroDestinationCardProps {
   activeIndex: number;
   onDestinationChange: (index: number) => void;
   content: HeroDestinationsContent;
+  onInteractionStart?: () => void;
+  onInteractionEnd?: () => void;
 }
 
 export function HeroDestinationCard({
@@ -18,6 +20,8 @@ export function HeroDestinationCard({
   activeIndex,
   onDestinationChange,
   content,
+  onInteractionStart,
+  onInteractionEnd,
 }: HeroDestinationCardProps) {
   const [imageError, setImageError] = useState<Record<string, boolean>>({});
   const destination = destinations[activeIndex];
@@ -43,6 +47,8 @@ export function HeroDestinationCard({
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
       className="bg-[#2a2a24]/75 backdrop-blur-xl rounded-2xl p-3 border border-white/10 shadow-2xl w-full max-w-[280px] lg:max-w-[300px]"
+      onMouseEnter={onInteractionStart}
+      onMouseLeave={onInteractionEnd}
     >
       {/* Slide indicator and controls */}
       <div className="flex items-center justify-between mb-2">
