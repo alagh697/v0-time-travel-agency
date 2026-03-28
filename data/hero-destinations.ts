@@ -59,7 +59,7 @@ export const heroDestinationsData: LocalizedContent<HeroDestinationsContent> = {
         description: 'Flânez dans le Paris de 1900, entre expositions universelles et cafés littéraires.',
         imageSrc: '/images/destinations/paris.jpg',
         heroVideoSrc: '/videos/paris.mp4',
-        fallbackImageSrc: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&q=80',
+        fallbackImageSrc: '/images/paris.jpg',
         stats: {
           era: '1900',
           duration: '6 heures',
