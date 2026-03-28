@@ -1,0 +1,118 @@
+import type { LocalizedContent, ContactPageContent, ContactInfo, OpeningHours } from '@/types';
+
+export const contactPageContent: LocalizedContent<ContactPageContent> = {
+  fr: {
+    heroTitle: 'Contactez-nous',
+    heroSubtitle: 'Notre équipe est à votre disposition pour répondre à toutes vos questions et vous accompagner dans la préparation de votre voyage temporel.',
+    form: {
+      title: 'Envoyez-nous un message',
+      subtitle: 'Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.',
+      nameLabel: 'Nom complet',
+      namePlaceholder: 'Votre nom',
+      emailLabel: 'Email',
+      emailPlaceholder: 'votre@email.com',
+      phoneLabel: 'Téléphone',
+      phonePlaceholder: '+33 6 00 00 00 00',
+      destinationLabel: 'Destination souhaitée',
+      destinationPlaceholder: 'Choisir une destination',
+      travelersLabel: 'Nombre de voyageurs',
+      travelersPlaceholder: 'Sélectionner',
+      dateLabel: 'Date souhaitée',
+      datePlaceholder: 'Choisir une date',
+      messageLabel: 'Votre message',
+      messagePlaceholder: 'Décrivez votre projet de voyage...',
+      privacyLabel: 'J\'accepte la politique de confidentialité et le traitement de mes données personnelles.',
+      submitButton: 'Envoyer le message',
+      successMessage: 'Votre message a été envoyé avec succès. Notre équipe vous répondra sous 24h.',
+    },
+    infoTitle: 'Informations de contact',
+    emailLabel: 'Email',
+    phoneLabel: 'Téléphone',
+    addressLabel: 'Adresse',
+    whatsappLabel: 'WhatsApp',
+    hoursTitle: 'Horaires d\'ouverture',
+    weekdaysLabel: 'Lundi - Vendredi',
+    weekendLabel: 'Samedi - Dimanche',
+    faqTitle: 'Questions fréquentes',
+    faqItems: [
+      {
+        id: 'faq-1',
+        question: 'Combien de temps à l\'avance dois-je réserver ?',
+        answer: 'Nous recommandons de réserver au moins 2 semaines à l\'avance pour garantir votre créneau préféré.',
+      },
+      {
+        id: 'faq-2',
+        question: 'Les voyages sont-ils sécurisés ?',
+        answer: 'Absolument. Notre technologie est certifiée et nous n\'avons jamais eu d\'incident en 15 ans d\'activité.',
+      },
+      {
+        id: 'faq-3',
+        question: 'Puis-je annuler ma réservation ?',
+        answer: 'Oui, l\'annulation est gratuite jusqu\'à 48h avant le départ (72h pour Florence Renaissance).',
+      },
+    ],
+  },
+  en: {
+    heroTitle: 'Contact Us',
+    heroSubtitle: 'Our team is at your disposal to answer all your questions and assist you in preparing your time travel journey.',
+    form: {
+      title: 'Send us a message',
+      subtitle: 'Fill out the form below and we will get back to you as soon as possible.',
+      nameLabel: 'Full Name',
+      namePlaceholder: 'Your name',
+      emailLabel: 'Email',
+      emailPlaceholder: 'your@email.com',
+      phoneLabel: 'Phone',
+      phonePlaceholder: '+1 555 000 0000',
+      destinationLabel: 'Desired Destination',
+      destinationPlaceholder: 'Choose a destination',
+      travelersLabel: 'Number of Travelers',
+      travelersPlaceholder: 'Select',
+      dateLabel: 'Preferred Date',
+      datePlaceholder: 'Choose a date',
+      messageLabel: 'Your Message',
+      messagePlaceholder: 'Describe your travel project...',
+      privacyLabel: 'I accept the privacy policy and the processing of my personal data.',
+      submitButton: 'Send Message',
+      successMessage: 'Your message has been sent successfully. Our team will respond within 24 hours.',
+    },
+    infoTitle: 'Contact Information',
+    emailLabel: 'Email',
+    phoneLabel: 'Phone',
+    addressLabel: 'Address',
+    whatsappLabel: 'WhatsApp',
+    hoursTitle: 'Opening Hours',
+    weekdaysLabel: 'Monday - Friday',
+    weekendLabel: 'Saturday - Sunday',
+    faqTitle: 'Frequently Asked Questions',
+    faqItems: [
+      {
+        id: 'faq-1',
+        question: 'How far in advance should I book?',
+        answer: 'We recommend booking at least 2 weeks in advance to guarantee your preferred time slot.',
+      },
+      {
+        id: 'faq-2',
+        question: 'Are the trips safe?',
+        answer: 'Absolutely. Our technology is certified and we have never had an incident in 15 years of operation.',
+      },
+      {
+        id: 'faq-3',
+        question: 'Can I cancel my reservation?',
+        answer: 'Yes, cancellation is free up to 48 hours before departure (72 hours for Renaissance Florence).',
+      },
+    ],
+  },
+};
+
+export const contactInfo: ContactInfo = {
+  email: 'contact@timetravelagency.com',
+  phone: '+33 1 42 00 00 00',
+  address: '42 Avenue des Champs-Temporels, 75008 Paris, France',
+  whatsapp: '+33 6 00 00 00 00',
+};
+
+export const openingHours: OpeningHours = {
+  weekdays: '9:00 - 19:00',
+  weekend: '10:00 - 17:00',
+};

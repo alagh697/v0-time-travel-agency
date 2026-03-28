@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useLocale } from '@/lib/locale-context';
 import { destinationsData } from '@/data/destinations';
@@ -11,7 +12,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 export function DestinationsSection() {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
   const destinations = t(destinationsData);
   const nav = t(navigationData);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -98,10 +99,13 @@ export function DestinationsSection() {
                       transition={{ duration: 0.3, delay: isActive ? 0.1 : 0 }}
                     >
                       <Button 
+                        asChild
                         variant="secondary" 
                         className="rounded-full bg-[#F5F0E8] text-[#3D3929] hover:bg-[#EBE6DC] border-0"
                       >
-                        {nav.cta}
+                        <Link href={`/${locale}/destinations/${destination.id}`}>
+                          {nav.cta}
+                        </Link>
                       </Button>
                     </motion.div>
                   </motion.div>
@@ -140,10 +144,13 @@ export function DestinationsSection() {
                   {destination.description}
                 </p>
                 <Button 
+                  asChild
                   variant="secondary" 
                   className="mt-4 rounded-full bg-[#F5F0E8] text-[#3D3929] hover:bg-[#EBE6DC] border-0 w-fit"
                 >
-                  {nav.cta}
+                  <Link href={`/${locale}/destinations/${destination.id}`}>
+                    {nav.cta}
+                  </Link>
                 </Button>
               </div>
             </div>

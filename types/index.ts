@@ -244,3 +244,122 @@ export interface SupportChatResponse {
   message: string;
   isAiGenerated: boolean;
 }
+
+// Destination Detail Types
+export interface TimelineStep {
+  id: string;
+  title: string;
+  description: string;
+}
+
+export interface HighlightItem {
+  id: string;
+  title: string;
+  description: string;
+}
+
+export interface IncludedItem {
+  id: string;
+  icon: string;
+  label: string;
+}
+
+export interface BookingOption {
+  times: string[];
+  languages: string[];
+  cancellationHours: number;
+}
+
+export interface DestinationDetail {
+  slug: string;
+  name: string;
+  subtitle: string;
+  era: string;
+  description: string;
+  longDescription: string;
+  heroImage: string;
+  duration: string;
+  groupSize: string;
+  minAge: number;
+  intensity: string;
+  price: number;
+  currency: string;
+  timelineSteps: TimelineStep[];
+  highlights: HighlightItem[];
+  gallery: string[];
+  includedItems: IncludedItem[];
+  bookingOptions: BookingOption;
+}
+
+export interface DestinationDetailContent {
+  backButton: string;
+  bookNow: string;
+  durationLabel: string;
+  groupSizeLabel: string;
+  minAgeLabel: string;
+  intensityLabel: string;
+  journeyTitle: string;
+  highlightsTitle: string;
+  galleryTitle: string;
+  includedTitle: string;
+  bookingTitle: string;
+  dateLabel: string;
+  timeLabel: string;
+  travelersLabel: string;
+  languagesLabel: string;
+  cancellationLabel: string;
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaButton: string;
+}
+
+// Contact Page Types
+export interface ContactInfo {
+  email: string;
+  phone: string;
+  address: string;
+  whatsapp: string;
+}
+
+export interface OpeningHours {
+  weekdays: string;
+  weekend: string;
+}
+
+export interface ContactFormContent {
+  title: string;
+  subtitle: string;
+  nameLabel: string;
+  namePlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  phoneLabel: string;
+  phonePlaceholder: string;
+  destinationLabel: string;
+  destinationPlaceholder: string;
+  travelersLabel: string;
+  travelersPlaceholder: string;
+  dateLabel: string;
+  datePlaceholder: string;
+  messageLabel: string;
+  messagePlaceholder: string;
+  privacyLabel: string;
+  submitButton: string;
+  successMessage: string;
+}
+
+export interface ContactPageContent {
+  heroTitle: string;
+  heroSubtitle: string;
+  form: ContactFormContent;
+  infoTitle: string;
+  emailLabel: string;
+  phoneLabel: string;
+  addressLabel: string;
+  whatsappLabel: string;
+  hoursTitle: string;
+  weekdaysLabel: string;
+  weekendLabel: string;
+  faqTitle: string;
+  faqItems: FAQItem[];
+}
