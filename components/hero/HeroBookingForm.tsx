@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Search, Calendar, Clock, Users, ChevronDown, Check } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Search, Calendar, Clock, Users, ChevronUp, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { HeroContent } from '@/types';
 import type { HeroDestination } from '@/data/hero-destinations';
@@ -12,6 +12,8 @@ interface HeroBookingFormProps {
   activeIndex: number;
   onDestinationChange: (index: number) => void;
   content: HeroContent;
+  onInteractionStart?: () => void;
+  onInteractionEnd?: () => void;
 }
 
 export function HeroBookingForm({
@@ -19,6 +21,8 @@ export function HeroBookingForm({
   activeIndex,
   onDestinationChange,
   content,
+  onInteractionStart,
+  onInteractionEnd,
 }: HeroBookingFormProps) {
   const activeDestination = destinations[activeIndex];
   
@@ -35,6 +39,18 @@ export function HeroBookingForm({
   const dateRef = useRef<HTMLDivElement>(null);
   const timeRef = useRef<HTMLDivElement>(null);
   const travelersRef = useRef<HTMLDivElement>(null);
+
+  // Track if any dropdown is open for interaction pause
+  const isAnyDropdownOpen = isDestinationOpen || isDateOpen || isTimeOpen || isTravelersOpen;
+
+  // Pause autoplay when dropdown is open
+  useEffect(() => {
+    if (isAnyDropdownOpen) {
+      onInteractionStart?.();
+    } else {
+      onInteractionEnd?.();
+    }
+  }, [isAnyDropdownOpen, onInteractionStart, onInteractionEnd]);
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -71,6 +87,33 @@ export function HeroBookingForm({
     setIsDestinationOpen(false);
   };
 
+  // Dropdown animation variants (opening upward)
+  const dropdownVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 10,
+      scale: 0.95,
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.2,
+        ease: 'easeOut',
+      },
+    },
+    exit: { 
+      opacity: 0, 
+      y: 10,
+      scale: 0.95,
+      transition: {
+        duration: 0.15,
+        ease: 'easeIn',
+      },
+    },
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -81,7 +124,7 @@ export function HeroBookingForm({
       <div className="bg-[#3d3d32]/75 backdrop-blur-xl rounded-3xl md:rounded-full p-3 md:p-2.5 shadow-2xl border border-white/10">
         <div className="flex flex-col md:flex-row items-stretch md:items-center gap-1 md:gap-0">
           
-          {/* Destination Dropdown */}
+          {/* Destination Dropdown - Opens Upward */}
           <div ref={destinationRef} className="relative flex-1">
             <button
               onClick={() => {
@@ -101,31 +144,39 @@ export function HeroBookingForm({
                   {activeDestination.shortLabel}
                 </p>
               </div>
-              <ChevronDown className={`w-4 h-4 text-white/50 transition-transform ${isDestinationOpen ? 'rotate-180' : ''}`} />
+              <ChevronUp className={`w-4 h-4 text-white/50 transition-transform ${isDestinationOpen ? 'rotate-180' : ''}`} />
             </button>
             
-            {isDestinationOpen && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-[#2a2a24]/95 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl z-50 overflow-hidden">
-                {destinations.map((dest, index) => (
-                  <button
-                    key={dest.id}
-                    onClick={() => handleDestinationSelect(index)}
-                    className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10 transition-colors"
-                  >
-                    <div className="text-left">
-                      <p className="text-sm font-medium text-white">{dest.name}</p>
-                      <p className="text-xs text-white/50">{dest.stats.era}</p>
-                    </div>
-                    {index === activeIndex && (
-                      <Check className="w-4 h-4 text-[#d4cfc4]" />
-                    )}
-                  </button>
-                ))}
-              </div>
-            )}
+            <AnimatePresence>
+              {isDestinationOpen && (
+                <motion.div 
+                  variants={dropdownVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="absolute bottom-full left-0 right-0 mb-2 bg-[#2a2a24]/95 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl z-50 overflow-hidden"
+                >
+                  {destinations.map((dest, index) => (
+                    <button
+                      key={dest.id}
+                      onClick={() => handleDestinationSelect(index)}
+                      className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10 transition-colors"
+                    >
+                      <div className="text-left">
+                        <p className="text-sm font-medium text-white">{dest.name}</p>
+                        <p className="text-xs text-white/50">{dest.stats.era}</p>
+                      </div>
+                      {index === activeIndex && (
+                        <Check className="w-4 h-4 text-[#d4cfc4]" />
+                      )}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
-          {/* Date Dropdown */}
+          {/* Date Dropdown - Opens Upward */}
           <div ref={dateRef} className="relative flex-1">
             <button
               onClick={() => {
@@ -143,31 +194,39 @@ export function HeroBookingForm({
                 </p>
                 <p className="text-sm font-medium text-white">{selectedDate}</p>
               </div>
-              <ChevronDown className={`w-4 h-4 text-white/50 transition-transform ${isDateOpen ? 'rotate-180' : ''}`} />
+              <ChevronUp className={`w-4 h-4 text-white/50 transition-transform ${isDateOpen ? 'rotate-180' : ''}`} />
             </button>
             
-            {isDateOpen && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-[#2a2a24]/95 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl z-50 overflow-hidden">
-                {dateOptions.map((date) => (
-                  <button
-                    key={date}
-                    onClick={() => {
-                      setSelectedDate(date);
-                      setIsDateOpen(false);
-                    }}
-                    className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10 transition-colors"
-                  >
-                    <span className="text-sm text-white">{date}</span>
-                    {date === selectedDate && (
-                      <Check className="w-4 h-4 text-[#d4cfc4]" />
-                    )}
-                  </button>
-                ))}
-              </div>
-            )}
+            <AnimatePresence>
+              {isDateOpen && (
+                <motion.div 
+                  variants={dropdownVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="absolute bottom-full left-0 right-0 mb-2 bg-[#2a2a24]/95 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl z-50 overflow-hidden"
+                >
+                  {dateOptions.map((date) => (
+                    <button
+                      key={date}
+                      onClick={() => {
+                        setSelectedDate(date);
+                        setIsDateOpen(false);
+                      }}
+                      className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10 transition-colors"
+                    >
+                      <span className="text-sm text-white">{date}</span>
+                      {date === selectedDate && (
+                        <Check className="w-4 h-4 text-[#d4cfc4]" />
+                      )}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
-          {/* Time Dropdown */}
+          {/* Time Dropdown - Opens Upward */}
           <div ref={timeRef} className="relative flex-1">
             <button
               onClick={() => {
@@ -185,31 +244,39 @@ export function HeroBookingForm({
                 </p>
                 <p className="text-sm font-medium text-white">{selectedTime}</p>
               </div>
-              <ChevronDown className={`w-4 h-4 text-white/50 transition-transform ${isTimeOpen ? 'rotate-180' : ''}`} />
+              <ChevronUp className={`w-4 h-4 text-white/50 transition-transform ${isTimeOpen ? 'rotate-180' : ''}`} />
             </button>
             
-            {isTimeOpen && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-[#2a2a24]/95 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl z-50 overflow-hidden max-h-48 overflow-y-auto">
-                {timeOptions.map((time) => (
-                  <button
-                    key={time}
-                    onClick={() => {
-                      setSelectedTime(time);
-                      setIsTimeOpen(false);
-                    }}
-                    className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10 transition-colors"
-                  >
-                    <span className="text-sm text-white">{time}</span>
-                    {time === selectedTime && (
-                      <Check className="w-4 h-4 text-[#d4cfc4]" />
-                    )}
-                  </button>
-                ))}
-              </div>
-            )}
+            <AnimatePresence>
+              {isTimeOpen && (
+                <motion.div 
+                  variants={dropdownVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="absolute bottom-full left-0 right-0 mb-2 bg-[#2a2a24]/95 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl z-50 overflow-hidden max-h-48 overflow-y-auto"
+                >
+                  {timeOptions.map((time) => (
+                    <button
+                      key={time}
+                      onClick={() => {
+                        setSelectedTime(time);
+                        setIsTimeOpen(false);
+                      }}
+                      className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10 transition-colors"
+                    >
+                      <span className="text-sm text-white">{time}</span>
+                      {time === selectedTime && (
+                        <Check className="w-4 h-4 text-[#d4cfc4]" />
+                      )}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
-          {/* Travelers Dropdown */}
+          {/* Travelers Dropdown - Opens Upward */}
           <div ref={travelersRef} className="relative flex-1">
             <button
               onClick={() => {
@@ -227,28 +294,36 @@ export function HeroBookingForm({
                 </p>
                 <p className="text-sm font-medium text-white">{selectedTravelers} {selectedTravelers === 1 ? 'personne' : 'personnes'}</p>
               </div>
-              <ChevronDown className={`w-4 h-4 text-white/50 transition-transform ${isTravelersOpen ? 'rotate-180' : ''}`} />
+              <ChevronUp className={`w-4 h-4 text-white/50 transition-transform ${isTravelersOpen ? 'rotate-180' : ''}`} />
             </button>
             
-            {isTravelersOpen && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-[#2a2a24]/95 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl z-50 overflow-hidden">
-                {travelerOptions.map((num) => (
-                  <button
-                    key={num}
-                    onClick={() => {
-                      setSelectedTravelers(num);
-                      setIsTravelersOpen(false);
-                    }}
-                    className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10 transition-colors"
-                  >
-                    <span className="text-sm text-white">{num} {num === 1 ? 'personne' : 'personnes'}</span>
-                    {num === selectedTravelers && (
-                      <Check className="w-4 h-4 text-[#d4cfc4]" />
-                    )}
-                  </button>
-                ))}
-              </div>
-            )}
+            <AnimatePresence>
+              {isTravelersOpen && (
+                <motion.div 
+                  variants={dropdownVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="absolute bottom-full left-0 right-0 mb-2 bg-[#2a2a24]/95 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl z-50 overflow-hidden"
+                >
+                  {travelerOptions.map((num) => (
+                    <button
+                      key={num}
+                      onClick={() => {
+                        setSelectedTravelers(num);
+                        setIsTravelersOpen(false);
+                      }}
+                      className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10 transition-colors"
+                    >
+                      <span className="text-sm text-white">{num} {num === 1 ? 'personne' : 'personnes'}</span>
+                      {num === selectedTravelers && (
+                        <Check className="w-4 h-4 text-[#d4cfc4]" />
+                      )}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {/* CTA Button */}

@@ -41,6 +41,7 @@ export function DestinationHero({ destination }: DestinationHeroProps) {
 
       {/* Content */}
       <Container className="relative z-10 pb-12 md:pb-16">
+
         {/* Back Button */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
