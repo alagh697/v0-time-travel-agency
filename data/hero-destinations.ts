@@ -58,7 +58,7 @@ export const heroDestinationsData: LocalizedContent<HeroDestinationsContent> = {
         subtitle: 'L\'âge d\'or parisien',
         description: 'Flânez dans le Paris de 1900, entre expositions universelles et cafés littéraires.',
         imageSrc: '/images/destinations/paris.jpg',
-        heroVideoSrc: '/videos/paris.mp4',
+        heroVideoSrc: '/videos/Paris.mp4',
         fallbackImageSrc: '/images/Paris.jpg',
         stats: {
           era: '1900',
