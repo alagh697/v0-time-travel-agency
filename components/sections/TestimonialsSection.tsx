@@ -50,9 +50,9 @@ export function TestimonialsSection() {
             <TestimonialCard testimonial={testimonials[0]} />
           </motion.div>
           <motion.div variants={staggerItem}>
-            <TestimonialCard 
-              testimonial={testimonials[1]} 
-              variant={testimonials[1].image ? 'image' : 'default'} 
+            <TestimonialCard
+              testimonial={testimonials[1]}
+              variant={testimonials[1].image ? 'image' : 'default'}
             />
           </motion.div>
           <motion.div variants={staggerItem}>
@@ -66,12 +66,12 @@ export function TestimonialsSection() {
           <motion.div variants={staggerItem}>
             <TestimonialCard testimonial={testimonials[4]} />
           </motion.div>
-          <motion.div variants={staggerItem} className="hidden lg:block">
+          {/* <motion.div variants={staggerItem} className="hidden lg:block">
             <TestimonialCard 
               testimonial={testimonials[4]} 
               variant={testimonials[4].image ? 'image' : 'default'}
             />
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </Container>
     </Section>
