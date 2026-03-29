@@ -34,7 +34,15 @@ export function HowItWorksSection() {
 
             {/* CTA Button */}
             <motion.div variants={staggerItem} className="mb-10 lg:mb-12">
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-7 py-2.5 text-sm font-medium">
+              <Button 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-7 py-2.5 text-sm font-medium"
+                onClick={() => {
+                  document.getElementById('booking-section')?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }}
+              >
                 {content.cta}
               </Button>
             </motion.div>

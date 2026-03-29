@@ -29,7 +29,15 @@ export function PricingSection() {
             <Heading as="h2" size="lg" className="mb-6">
               {content.headline}
             </Heading>
-            <Button className="rounded-full px-8">
+            <Button 
+              className="rounded-full px-8"
+              onClick={() => {
+                document.getElementById('booking-section')?.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
+            >
               {content.cta}
             </Button>
           </motion.div>
