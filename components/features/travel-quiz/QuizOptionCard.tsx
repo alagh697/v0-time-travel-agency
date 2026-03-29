@@ -20,7 +20,7 @@ export function QuizOptionCard({ option, isSelected, onSelect, index }: QuizOpti
       transition={{ duration: 0.4, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
       onClick={() => onSelect(option.id)}
       className={cn(
-        'group relative w-full rounded-2xl border-2 p-5 text-left transition-all duration-300',
+        'group relative w-full rounded-2xl border-2 p-5 text-left transition-all duration-300 cursor-pointer',
         'hover:border-primary/50 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         isSelected
           ? 'border-primary bg-primary/5 shadow-md'

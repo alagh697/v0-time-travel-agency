@@ -41,7 +41,7 @@ export function ChatHeader({
           </svg>
         </div>
         <div>
-          <h3 className="font-serif text-base font-semibold text-foreground">
+          <h3 className="text-base font-semibold text-foreground">
             {title}
           </h3>
           <p className="text-xs text-muted-foreground">{subtitle}</p>

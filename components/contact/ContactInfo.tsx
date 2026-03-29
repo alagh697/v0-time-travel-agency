@@ -27,7 +27,7 @@ export function ContactInfo() {
         transition={{ duration: 0.6, delay: 0.1 }}
         className="bg-card rounded-3xl p-6 border border-border"
       >
-        <h3 className="font-serif text-xl text-foreground mb-6">
+        <h3 className="text-xl font-semibold text-foreground mb-6">
           {content.infoTitle}
         </h3>
 
@@ -62,7 +62,7 @@ export function ContactInfo() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="bg-card rounded-3xl p-6 border border-border"
       >
-        <h3 className="font-serif text-xl text-foreground mb-6 flex items-center gap-3">
+        <h3 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-3">
           <Clock className="w-5 h-5 text-primary" />
           {content.hoursTitle}
         </h3>
@@ -86,7 +86,7 @@ export function ContactInfo() {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="bg-card rounded-3xl p-6 border border-border"
       >
-        <h3 className="font-serif text-xl text-foreground mb-6">
+        <h3 className="text-xl font-semibold text-foreground mb-6">
           {content.faqTitle}
         </h3>
 
@@ -95,7 +95,7 @@ export function ContactInfo() {
             <div key={item.id} className="border-b border-border last:border-0 pb-3 last:pb-0">
               <button
                 onClick={() => setOpenFaq(openFaq === item.id ? null : item.id)}
-                className="w-full flex items-center justify-between text-left py-2"
+                className="w-full flex items-center justify-between text-left py-2 cursor-pointer"
               >
                 <span className="text-foreground font-medium pr-4">{item.question}</span>
                 <ChevronDown

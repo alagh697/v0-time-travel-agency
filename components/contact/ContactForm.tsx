@@ -35,7 +35,7 @@ export function ContactForm() {
         <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-6">
           <Check className="w-8 h-8 text-accent" />
         </div>
-        <h3 className="font-serif text-2xl text-foreground mb-4">
+        <h3 className="text-2xl font-semibold text-foreground mb-4">
           {t({ fr: 'Message envoyé !', en: 'Message Sent!' })}
         </h3>
         <p className="text-muted-foreground">
@@ -52,7 +52,7 @@ export function ContactForm() {
       transition={{ duration: 0.6 }}
       className="bg-card rounded-3xl p-6 md:p-8 border border-border"
     >
-      <h2 className="font-serif text-2xl text-foreground mb-2">
+      <h2 className="text-2xl font-semibold text-foreground mb-2">
         {content.form.title}
       </h2>
       <p className="text-muted-foreground mb-8">

@@ -20,7 +20,7 @@ export function DestinationCTA() {
           transition={{ duration: 0.6 }}
           className="bg-primary rounded-3xl p-8 md:p-12 text-center"
         >
-          <h2 className="font-serif text-3xl md:text-4xl text-primary-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
             {content.ctaTitle}
           </h2>
           <p className="text-primary-foreground/80 mb-8 max-w-xl mx-auto">

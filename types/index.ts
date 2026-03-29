@@ -35,6 +35,7 @@ export interface Destination {
   image: string;
   era: string;
   featured?: boolean;
+  discoverLabel?: string;
 }
 
 export interface EditorialContent {

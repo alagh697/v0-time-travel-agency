@@ -22,7 +22,7 @@ export function ContactHero() {
           {/* Header */}
           <Header />
 
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
             {content.heroTitle}
           </h1>
           <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">

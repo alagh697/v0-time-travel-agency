@@ -123,7 +123,7 @@ export function SupportChatPanel({ onClose }: SupportChatPanelProps) {
                 <polyline points="12,6 12,12 16,14" />
               </svg>
             </div>
-            <h4 className="font-serif text-lg font-semibold text-foreground">
+            <h4 className="text-lg font-semibold text-foreground">
               {content.headerTitle}
             </h4>
             <p className="mt-1 text-sm text-muted-foreground">

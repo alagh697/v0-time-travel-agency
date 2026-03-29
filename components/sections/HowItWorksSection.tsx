@@ -27,14 +27,22 @@ export function HowItWorksSection() {
             {/* Headline - Large editorial style */}
             <motion.h2
               variants={staggerItem}
-              className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl leading-[1.15] tracking-tight text-foreground max-w-xl mb-6"
+              className="text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.15] tracking-tight text-foreground max-w-xl mb-6"
             >
               {content.headline}
             </motion.h2>
 
             {/* CTA Button */}
             <motion.div variants={staggerItem} className="mb-10 lg:mb-12">
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-7 py-2.5 text-sm font-medium">
+              <Button 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-7 py-2.5 text-sm font-medium"
+                onClick={() => {
+                  document.getElementById('booking-section')?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }}
+              >
                 {content.cta}
               </Button>
             </motion.div>
@@ -67,6 +75,8 @@ export function HowItWorksSection() {
                 src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800&q=80"
                 alt="Person experiencing VR time travel"
                 fill
+                priority
+                loading="eager"
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />

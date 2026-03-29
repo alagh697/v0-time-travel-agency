@@ -1,9 +1,38 @@
 import type { LocalizedContent, BookingContent } from '@/types';
 
-export const bookingData: LocalizedContent<BookingContent> = {
+export interface BookingConfirmationContent {
+  title: string;
+  subtitle: string;
+  destinationLabel: string;
+  dateLabel: string;
+  timeLabel: string;
+  travelersLabel: string;
+  travelersUnit: string;
+  closeButton: string;
+}
+
+export interface BookingFlowContent {
+  headline: string;
+  cta: string;
+  ctaConfirm: string;
+  steps: { number: number; label: string }[];
+  destinations: { id: string; name: string; image: string }[];
+  dateLabel: string;
+  datePlaceholder: string;
+  timeLabel: string;
+  times: string[];
+  travelersLabel: string;
+  travelerOptions: number[];
+  travelerUnit: string;
+  travelerUnitPlural: string;
+  confirmation: BookingConfirmationContent;
+}
+
+export const bookingData: LocalizedContent<BookingFlowContent> = {
   fr: {
     headline: 'Réservez votre voyage dans le temps avec Time Travel Agency',
     cta: 'Continuer',
+    ctaConfirm: 'Valider',
     steps: [
       { number: 1, label: 'Destination' },
       { number: 2, label: 'Date' },
@@ -12,8 +41,8 @@ export const bookingData: LocalizedContent<BookingContent> = {
     ],
     destinations: [
       {
-        id: 'jurassic',
-        name: 'Expédition Jurassique',
+        id: 'cretace',
+        name: 'Expédition Crétacé',
         image: 'https://images.unsplash.com/photo-1606856110002-d0991ce78250?w=400&q=80',
       },
       {
@@ -32,10 +61,29 @@ export const bookingData: LocalizedContent<BookingContent> = {
         image: 'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=400&q=80',
       },
     ],
+    dateLabel: 'Choisissez une date',
+    datePlaceholder: 'Sélectionner une date',
+    timeLabel: 'Choisissez un horaire',
+    times: ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
+    travelersLabel: 'Nombre de voyageurs',
+    travelerOptions: [1, 2, 3, 4, 5, 6],
+    travelerUnit: 'personne',
+    travelerUnitPlural: 'personnes',
+    confirmation: {
+      title: 'Réservation confirmée',
+      subtitle: 'Votre voyage dans le temps est réservé',
+      destinationLabel: 'Destination',
+      dateLabel: 'Date',
+      timeLabel: 'Heure',
+      travelersLabel: 'Voyageurs',
+      travelersUnit: 'personne(s)',
+      closeButton: 'Fermer',
+    },
   },
   en: {
     headline: 'Book Your Journey Through Time with Time Travel Agency',
     cta: 'Continue',
+    ctaConfirm: 'Confirm',
     steps: [
       { number: 1, label: 'Destination' },
       { number: 2, label: 'Date' },
@@ -44,8 +92,8 @@ export const bookingData: LocalizedContent<BookingContent> = {
     ],
     destinations: [
       {
-        id: 'jurassic',
-        name: 'Jurassic Expedition',
+        id: 'cretace',
+        name: 'Cretaceous Expedition',
         image: 'https://images.unsplash.com/photo-1606856110002-d0991ce78250?w=400&q=80',
       },
       {
@@ -64,6 +112,24 @@ export const bookingData: LocalizedContent<BookingContent> = {
         image: 'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=400&q=80',
       },
     ],
+    dateLabel: 'Choose a date',
+    datePlaceholder: 'Select a date',
+    timeLabel: 'Choose a time',
+    times: ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
+    travelersLabel: 'Number of travelers',
+    travelerOptions: [1, 2, 3, 4, 5, 6],
+    travelerUnit: 'person',
+    travelerUnitPlural: 'people',
+    confirmation: {
+      title: 'Booking Confirmed',
+      subtitle: 'Your journey through time is booked',
+      destinationLabel: 'Destination',
+      dateLabel: 'Date',
+      timeLabel: 'Time',
+      travelersLabel: 'Travelers',
+      travelersUnit: 'person(s)',
+      closeButton: 'Close',
+    },
   },
 };
 

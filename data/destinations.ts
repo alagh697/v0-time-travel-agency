@@ -9,6 +9,7 @@ export const destinationsData: LocalizedContent<Destination[]> = {
       image: 'https://images.unsplash.com/photo-1606856110002-d0991ce78250?w=800&q=80',
       era: '-150M années',
       featured: true,
+      discoverLabel: 'Découvrir le Jurassique',
     },
     {
       id: 'paris-belle-epoque',
@@ -16,6 +17,7 @@ export const destinationsData: LocalizedContent<Destination[]> = {
       description: 'Flânez dans le Paris de 1900, entre expositions universelles et cafés littéraires.',
       image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80',
       era: '1900',
+      discoverLabel: 'Découvrir Paris Belle Époque',
     },
     {
       id: 'renaissance-florence',
@@ -23,6 +25,7 @@ export const destinationsData: LocalizedContent<Destination[]> = {
       description: 'Rencontrez les grands maîtres de la Renaissance italienne dans leur atelier.',
       image: 'https://images.unsplash.com/photo-1543429258-c5f5f1bf0cfc?w=800&q=80',
       era: '1500',
+      discoverLabel: 'Découvrir Florence Renaissance',
     },
   ],
   en: [
@@ -33,6 +36,7 @@ export const destinationsData: LocalizedContent<Destination[]> = {
       image: 'https://images.unsplash.com/photo-1606856110002-d0991ce78250?w=800&q=80',
       era: '-150M years',
       featured: true,
+      discoverLabel: 'Explore the Jurassic',
     },
     {
       id: 'paris-belle-epoque',
@@ -40,6 +44,7 @@ export const destinationsData: LocalizedContent<Destination[]> = {
       description: 'Stroll through 1900s Paris, between world exhibitions and literary cafés.',
       image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80',
       era: '1900',
+      discoverLabel: 'Explore Belle Époque Paris',
     },
     {
       id: 'renaissance-florence',
@@ -47,6 +52,7 @@ export const destinationsData: LocalizedContent<Destination[]> = {
       description: 'Meet the great masters of the Italian Renaissance in their workshops.',
       image: 'https://images.unsplash.com/photo-1543429258-c5f5f1bf0cfc?w=800&q=80',
       era: '1500',
+      discoverLabel: 'Explore Renaissance Florence',
     },
   ],
 };

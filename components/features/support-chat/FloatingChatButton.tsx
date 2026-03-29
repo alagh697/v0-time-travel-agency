@@ -21,7 +21,7 @@ export function FloatingChatButton({ onClick }: FloatingChatButtonProps) {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={onClick}
-      className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-primary-foreground shadow-lg transition-shadow hover:shadow-xl max-md:bottom-4 max-md:right-4 max-md:px-4 max-md:py-3"
+      className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-primary-foreground shadow-lg transition-shadow hover:shadow-xl max-md:bottom-4 max-md:right-4 max-md:px-4 max-md:py-3 cursor-pointer"
       aria-label={content.buttonLabel}
     >
       <MessageCircle className="h-5 w-5" />

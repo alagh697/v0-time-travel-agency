@@ -68,7 +68,7 @@ export function DestinationHero({ destination }: DestinationHeroProps) {
           <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white/90 text-sm mb-4">
             {destination.era}
           </span>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-3">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3">
             {destination.name}
           </h1>
           <p className="text-lg md:text-xl text-white/80 font-light">

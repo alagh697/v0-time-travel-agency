@@ -47,6 +47,12 @@ export function Header() {
             <Button 
               size="sm"
               className="rounded-full bg-[#d4cfc4] text-[#3d3d32] hover:bg-[#c9c3b6] font-medium px-5 py-2 h-auto text-sm border-0"
+              onClick={() => {
+                document.getElementById('booking-section')?.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
             >
               {content.cta}
             </Button>
@@ -85,6 +91,13 @@ export function Header() {
                 <LanguageSwitcher />
                 <Button 
                   className="rounded-full bg-[#d4cfc4] text-[#3d3d32] hover:bg-[#c9c3b6]"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    document.getElementById('booking-section')?.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }}
                 >
                   {content.cta}
                 </Button>

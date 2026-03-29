@@ -6,15 +6,12 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useLocale } from '@/lib/locale-context';
 import { destinationsData } from '@/data/destinations';
-import { navigationData } from '@/data/navigation';
 import { Container, Section } from '@/components/shared';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 export function DestinationsSection() {
   const { locale, t } = useLocale();
   const destinations = t(destinationsData);
-  const nav = t(navigationData);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // Determine which card is "active" (expanded)
@@ -39,25 +36,30 @@ export function DestinationsSection() {
             const isActive = activeIndex === index;
             
             return (
-              <motion.div
+              <Link
                 key={destination.id}
-                className="relative overflow-hidden rounded-3xl cursor-pointer"
+                href={`/${locale}/destinations/${destination.id}`}
+                className="block relative overflow-hidden rounded-3xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 style={{ flex: isActive ? 2 : 1 }}
-                animate={{ flex: isActive ? 2 : 1 }}
-                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                 onMouseEnter={() => setHoveredIndex(index)}
               >
-                {/* Background Image */}
-                <Image
-                  src={destination.image}
-                  alt={destination.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                
-                {/* Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{ scale: isActive ? 1 : 1 }}
+                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  {/* Background Image */}
+                  <Image
+                    src={destination.image}
+                    alt={destination.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  
+                  {/* Dark Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                </motion.div>
                 
                 {/* Content */}
                 <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end">
@@ -87,7 +89,7 @@ export function DestinationsSection() {
                       {destination.description}
                     </motion.p>
                     
-                    {/* CTA Button - Only visible on active card */}
+                    {/* CTA Button - Visual only, not interactive */}
                     <motion.div
                       initial={false}
                       animate={{ 
@@ -98,19 +100,15 @@ export function DestinationsSection() {
                       }}
                       transition={{ duration: 0.3, delay: isActive ? 0.1 : 0 }}
                     >
-                      <Button 
-                        asChild
-                        variant="secondary" 
-                        className="rounded-full bg-[#F5F0E8] text-[#3D3929] hover:bg-[#EBE6DC] border-0"
+                      <span 
+                        className="inline-flex items-center justify-center rounded-full bg-[#F5F0E8] text-[#3D3929] hover:bg-[#EBE6DC] border-0 px-4 py-2 text-sm font-medium"
                       >
-                        <Link href={`/${locale}/destinations/${destination.id}`}>
-                          {nav.cta}
-                        </Link>
-                      </Button>
+                        {destination.discoverLabel || t({ fr: 'Découvrir', en: 'Explore' })}
+                      </span>
                     </motion.div>
                   </motion.div>
                 </div>
-              </motion.div>
+              </Link>
             );
           })}
         </div>
@@ -118,9 +116,10 @@ export function DestinationsSection() {
         {/* Mobile: Vertical Stack */}
         <div className="flex flex-col gap-4 md:hidden">
           {destinations.map((destination) => (
-            <div
+            <Link
               key={destination.id}
-              className="relative overflow-hidden rounded-2xl"
+              href={`/${locale}/destinations/${destination.id}`}
+              className="block relative overflow-hidden rounded-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               style={{ height: '280px' }}
             >
               {/* Background Image */}
@@ -143,17 +142,13 @@ export function DestinationsSection() {
                 <p className="mt-2 text-white/80 text-sm line-clamp-2">
                   {destination.description}
                 </p>
-                <Button 
-                  asChild
-                  variant="secondary" 
-                  className="mt-4 rounded-full bg-[#F5F0E8] text-[#3D3929] hover:bg-[#EBE6DC] border-0 w-fit"
+                <span 
+                  className="mt-4 inline-flex items-center justify-center rounded-full bg-[#F5F0E8] text-[#3D3929] hover:bg-[#EBE6DC] border-0 w-fit px-4 py-2 text-sm font-medium"
                 >
-                  <Link href={`/${locale}/destinations/${destination.id}`}>
-                    {nav.cta}
-                  </Link>
-                </Button>
+                  {destination.discoverLabel || t({ fr: 'Découvrir', en: 'Explore' })}
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </Container>
