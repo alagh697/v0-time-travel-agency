@@ -20,7 +20,7 @@ export function ChatQuickActions({ actions, onSelectAction, disabled }: ChatQuic
           transition={{ duration: 0.2, delay: index * 0.05 }}
           onClick={() => onSelectAction(action.prompt)}
           disabled={disabled}
-          className="rounded-full bg-secondary px-3 py-1.5 text-xs text-secondary-foreground transition-colors hover:bg-secondary/80 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="rounded-full bg-secondary px-3 py-1.5 text-xs text-secondary-foreground transition-colors hover:bg-secondary/80 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           {action.label}
         </motion.button>

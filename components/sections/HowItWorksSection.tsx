@@ -27,7 +27,7 @@ export function HowItWorksSection() {
             {/* Headline - Large editorial style */}
             <motion.h2
               variants={staggerItem}
-              className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl leading-[1.15] tracking-tight text-foreground max-w-xl mb-6"
+              className="text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.15] tracking-tight text-foreground max-w-xl mb-6"
             >
               {content.headline}
             </motion.h2>
@@ -76,6 +76,7 @@ export function HowItWorksSection() {
                 alt="Person experiencing VR time travel"
                 fill
                 priority
+                loading="eager"
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />

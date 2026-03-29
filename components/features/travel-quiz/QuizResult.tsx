@@ -76,7 +76,7 @@ export function QuizResult({
             <Badge variant="outline" className="mb-2 bg-white/10 text-white border-white/20 backdrop-blur-sm">
               {destination.era}
             </Badge>
-            <h3 className="text-2xl font-serif font-bold text-white text-balance">
+            <h3 className="text-2xl font-bold text-white text-balance">
               {recommendation.destinationName}
             </h3>
           </div>

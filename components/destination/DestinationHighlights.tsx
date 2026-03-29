@@ -16,7 +16,7 @@ export function DestinationHighlights({ highlights }: DestinationHighlightsProps
 
   return (
     <section className="py-12">
-      <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-8">
+      <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-8">
         {content.highlightsTitle}
       </h2>
 

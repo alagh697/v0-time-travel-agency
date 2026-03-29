@@ -61,7 +61,7 @@ export function EditorialSection() {
             variants={slideFromRight}
             className="lg:col-span-8"
           >
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.15] tracking-tight text-foreground max-w-2xl">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.15] tracking-tight text-foreground max-w-2xl">
               {content.headline}
             </h2>
             <p className="mt-6 md:mt-8 text-muted-foreground text-base md:text-lg leading-relaxed max-w-xl">

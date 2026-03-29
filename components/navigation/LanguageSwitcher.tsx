@@ -19,7 +19,7 @@ export function LanguageSwitcher() {
           key={lang.code}
           onClick={() => setLocale(lang.code)}
           className={cn(
-            'px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200',
+            'px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200 cursor-pointer',
             locale === lang.code
               ? 'bg-white/20 text-white'
               : 'text-white/60 hover:text-white'
