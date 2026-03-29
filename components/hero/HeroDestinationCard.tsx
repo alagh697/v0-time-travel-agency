@@ -59,14 +59,14 @@ export function HeroDestinationCard({
           <button
             onClick={handlePrevious}
             aria-label={content.controls.previous}
-            className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors cursor-pointer"
           >
             <ChevronLeft className="w-3.5 h-3.5 text-white/70" />
           </button>
           <button
             onClick={handleNext}
             aria-label={content.controls.next}
-            className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors cursor-pointer"
           >
             <ChevronRight className="w-3.5 h-3.5 text-white/70" />
           </button>
@@ -124,7 +124,7 @@ export function HeroDestinationCard({
             key={i}
             onClick={() => onDestinationChange(i)}
             aria-label={`Go to destination ${i + 1}`}
-            className={`h-1 rounded-full transition-all ${
+            className={`h-1 rounded-full transition-all cursor-pointer ${
               i === activeIndex ? 'w-4 bg-white/80' : 'w-1.5 bg-white/30 hover:bg-white/50'
             }`}
           />

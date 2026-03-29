@@ -75,6 +75,7 @@ export function HowItWorksSection() {
                 src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800&q=80"
                 alt="Person experiencing VR time travel"
                 fill
+                priority
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />

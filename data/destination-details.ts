@@ -14,7 +14,7 @@ export const destinationDetailsData: LocalizedContent<DestinationDetail[]> = {
       groupSize: '8 personnes max',
       minAge: 12,
       intensity: 'Modérée',
-      price: 2499,
+      price: 29,
       currency: '€',
       timelineSteps: [
         { id: '1', title: 'Briefing de sécurité', description: 'Présentation des protocoles de voyage temporel et équipement de protection.' },
@@ -60,7 +60,7 @@ export const destinationDetailsData: LocalizedContent<DestinationDetail[]> = {
       groupSize: '6 personnes max',
       minAge: 10,
       intensity: 'Légère',
-      price: 1899,
+      price: 25,
       currency: '€',
       timelineSteps: [
         { id: '1', title: 'Préparation vestimentaire', description: 'Habillage en costumes d\'époque authentiques pour une immersion totale.' },
@@ -106,7 +106,7 @@ export const destinationDetailsData: LocalizedContent<DestinationDetail[]> = {
       groupSize: '4 personnes max',
       minAge: 14,
       intensity: 'Modérée',
-      price: 3299,
+      price: 35,
       currency: '€',
       timelineSteps: [
         { id: '1', title: 'Transformation vestimentaire', description: 'Revêtez les habits de la noblesse florentine.' },
@@ -154,7 +154,7 @@ export const destinationDetailsData: LocalizedContent<DestinationDetail[]> = {
       groupSize: '8 people max',
       minAge: 12,
       intensity: 'Moderate',
-      price: 2499,
+      price: 29,
       currency: '€',
       timelineSteps: [
         { id: '1', title: 'Safety Briefing', description: 'Presentation of time travel protocols and protective equipment.' },
@@ -200,7 +200,7 @@ export const destinationDetailsData: LocalizedContent<DestinationDetail[]> = {
       groupSize: '6 people max',
       minAge: 10,
       intensity: 'Light',
-      price: 1899,
+      price: 25,
       currency: '€',
       timelineSteps: [
         { id: '1', title: 'Costume Preparation', description: 'Dressing in authentic period costumes for total immersion.' },
@@ -246,7 +246,7 @@ export const destinationDetailsData: LocalizedContent<DestinationDetail[]> = {
       groupSize: '4 people max',
       minAge: 14,
       intensity: 'Moderate',
-      price: 3299,
+      price: 35,
       currency: '€',
       timelineSteps: [
         { id: '1', title: 'Costume Transformation', description: 'Don the garments of Florentine nobility.' },

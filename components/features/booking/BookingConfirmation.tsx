@@ -67,7 +67,7 @@ export function BookingConfirmation({
                 >
                   <CheckCircle className="w-8 h-8 text-primary" />
                 </motion.div>
-                <h3 className="font-serif text-xl font-semibold text-foreground">
+                <h3 className="text-xl font-semibold text-foreground">
                   {content.title}
                 </h3>
                 <p className="text-sm text-muted-foreground mt-1">
