@@ -32,7 +32,14 @@ export function TestimonialsSection() {
               {content.description}
             </p>
           </div>
-          <Button variant="outline" className="rounded-full shrink-0">
+          <Button variant="outline" className="rounded-full shrink-0"
+           onClick={() => {
+                document.getElementById('booking-section')?.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
+          >
             {content.cta}
           </Button>
         </motion.div>

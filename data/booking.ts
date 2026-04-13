@@ -43,17 +43,17 @@ export const bookingData: LocalizedContent<BookingFlowContent> = {
       {
         id: 'cretace',
         name: 'Expédition Crétacé',
-        image: 'https://images.unsplash.com/photo-1606856110002-d0991ce78250?w=400&q=80',
+        image: '/images/Cretace.jpg',
       },
       {
         id: 'paris',
         name: 'Paris Belle Époque',
-        image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=80',
+        image: '/images/Paris.jpg',
       },
       {
         id: 'florence',
         name: 'Florence Renaissance',
-        image: 'https://images.unsplash.com/photo-1543429258-c5f5f1bf0cfc?w=400&q=80',
+        image: '/images/Florence.jpg',
       },
       {
         id: 'egypt',

@@ -23,12 +23,12 @@ export function CTABannerSection() {
             {/* Background Image */}
             <div className="absolute inset-0">
               <Image
-                src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=1200&q=80"
+                src="/images/stargate2.jpg"
                 alt="VR Time Travel Experience"
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
+              <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-black/70" />
             </div>
 
             {/* Content */}

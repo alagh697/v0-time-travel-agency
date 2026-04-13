@@ -21,7 +21,7 @@ export function HowItWorksSection() {
         variants={fadeIn}
         className="relative bg-[#f5f3ef] rounded-3xl overflow-hidden max-w-7xl mx-auto"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[500px] lg:min-h-[560px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-125 lg:min-h-140">
           {/* Left Content Area */}
           <div className="lg:col-span-7 p-8 md:p-10 lg:p-12 xl:p-14 flex flex-col">
             {/* Headline - Large editorial style */}
@@ -69,10 +69,10 @@ export function HowItWorksSection() {
           </div>
 
           {/* Right Image Area */}
-          <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-0">
+          <div className="lg:col-span-5 relative min-h-75 lg:min-h-0">
             <div className="absolute inset-0 lg:inset-y-0 lg:right-0 lg:left-0">
               <Image
-                src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800&q=80"
+                src="/images/stargate1.png"
                 alt="Person experiencing VR time travel"
                 fill
                 priority
@@ -81,7 +81,7 @@ export function HowItWorksSection() {
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
               {/* Subtle gradient overlay for text readability on mobile */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent lg:hidden" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent lg:hidden" />
             </div>
           </div>
         </div>
